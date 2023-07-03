@@ -14,6 +14,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://carstenbauer.github.io/user_gettingstarted/index.html</loc>
+    <lastmod>2023-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://carstenbauer.github.io/sysadmin_julia/index.html</loc>
     <lastmod>2023-07-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -26,12 +32,6 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://carstenbauer.github.io/sysadmin_packages/index.html</loc>
-    <lastmod>2023-07-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
     <loc>https://carstenbauer.github.io/user_hpcsystems/index.html</loc>
     <lastmod>2023-07-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -39,12 +39,6 @@
 </url>
 <url>
     <loc>https://carstenbauer.github.io/user_faq/index.html</loc>
-    <lastmod>2023-07-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://carstenbauer.github.io/user_general/index.html</loc>
     <lastmod>2023-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
