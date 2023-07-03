@@ -1,14 +1,12 @@
 +++
-title = "User: FAQ"
+title = "FAQ"
 hascode = true
 literate_mds = true
 showall = false
 noeval = true
 +++
 
-# User: FAQ
-
----
+# FAQ
 
 \label{content}
 **Content**
@@ -53,5 +51,17 @@ Example: `JULIA_CPU_TARGET="generic;skylake-avx512,clone_all;znver2,clone_all"`.
 ## Should I use Distributed.jl or MPI.jl for large-scale parallelism?
 
 While the Distributed standard library provides some convenient tools and has its use cases you should generally use MPI.jl to scale your code up (e.g. to thousands of compute nodes). Not only is MPI the established standard for distributed computing in any programming language, it also makes use of fast interconnects in HPC clusters (which the Distributed standard library currently doesn't).
+
+[⤴ _**back to Content**_](#content)
+
+## Should I use Julia artifacts (JLLs) or system software?
+
+If JLLs work fine for you then use them. JLLs have the big advantage that they are convenient and, in many cases, "just work" out of the box. System software can (but doesn't necessarily) give better performance but overriding the relevant bits of JLLs can be cumbersome. Generelly speaking, we recommend to only manually replace JLL libraries by system software if JLLs don't work (e.g. if a vendor specific MPI is required). However, in such a case it would be even better to nudge the HPC admins and make this setup permanent and generally available in form of a Julia Lmod module.
+
+[⤴ _**back to Content**_](#content)
+
+## How to cope with a large number of MPI processes accessing the same Julia depot?
+
+In a distributed computing scenario with, e.g., multiple thousands of Julia (MPI) processes, accessing the same Julia depot on a shared file system - when loading packages and precompiled cache files on `using PackageX` - can become (very) time consuming. A workaround is to bundle up the Julia depot (e.g. as a `.tar.gz`), distribute it to the local node storage (if available) or local memory (often times mounted as `/tmp`) of all assigned compute nodes, and then set the `JULIA_DEPOT_PATH` accordingly.
 
 [⤴ _**back to Content**_](#content)

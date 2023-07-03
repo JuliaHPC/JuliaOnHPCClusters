@@ -1,12 +1,12 @@
 +++
-title = "User: HPC systems with Julia support"
+title = "HPC systems with Julia support"
 hascode = true
 literate_mds = true
 showall = false
 noeval = true
 +++
 
-# User: HPC systems with Julia support
+# HPC systems with Julia support
 
 \note{It is difficult to keep the table below up-to-date. It is also almost certainly uncomplete. We rely on people like you, so please file a PR if you think the table could be improved!}
 
@@ -19,6 +19,7 @@ noeval = true
 
 ---
 
+## Description
 We try to maintain an (incomplete) list of HPC systems that provide a
 Julia installation and/or support for using Julia to its users. For this, we use the following nomenclature:
 * *Center:* The HPC center's name
@@ -30,14 +31,16 @@ Julia installation and/or support for using Julia to its users. For this, we use
 * *Accelerators:* The main accelerator (if anything) in the system
 * *Documentation:* Links to documentation for Julia users
 
+## HPC systems
+
 (Sorted in alphabetical order)
 
-#### Australasia
+### Australasia
 **Center** | **System** | **Installation** | **Support** | **Interactive** | **Architecture** | **Accelerators** | **Documentation**
 -----|-----|-----|-----|-----|-----|-----|-----
 [NeSI](https://www.nesi.org.nz/) | [Mahuika, Māui](https://www.nesi.org.nz/services/high-performance-computing-and-analytics/platforms) | ✅ | ✅ | ✅ | [Intel Xeon Broadwell/Cascade Lake + AMD EPYC Milan](https://www.nesi.org.nz/services/high-performance-computing-and-analytics/platforms) | [Nvidia Tesla P100, A100](https://support.nesi.org.nz/hc/en-gb/articles/360001471955) | [1](https://support.nesi.org.nz/hc/en-gb/articles/360001175895-Julia)
 
-#### Europe
+### Europe
 **Center** | **System** | **Installation** | **Support** | **Interactive** | **Architecture** | **Accelerators** | **Documentation**
 -----|-----|-----|-----|-----|-----|-----|-----
 [ARC, UCL](https://www.ucl.ac.uk/arc) | [Myriad](https://www.rc.ucl.ac.uk/docs/Clusters/Myriad/), [Kathleen](https://www.rc.ucl.ac.uk/docs/Clusters/Kathleen/), [Michael](https://www.rc.ucl.ac.uk/docs/Clusters/Michael/), [Young](https://www.rc.ucl.ac.uk/docs/Clusters/Young/) | ✅ | ✅ | ? | various Intel Xeon | various GPUs | [1](https://www.rc.ucl.ac.uk/docs/)
@@ -55,7 +58,7 @@ Julia installation and/or support for using Julia to its users. For this, we use
 [ZDV, U Mainz](https://hpc-en.uni-mainz.de/) | [MOGON II](https://hpc-en.uni-mainz.de/high-performance-computing/systeme/) | ✅ | ? | ? | [Intel Xeon Broadwell + Skylake](https://hpc-en.uni-mainz.de/high-performance-computing/systeme/) | no | [1](https://mogonwiki.zdv.uni-mainz.de/dokuwiki/start:development:scripting_languages:julia)
 [ZIB](https://www.zib.de/) | [HLRN-IV](https://www.hlrn.de/supercomputer-e/hlrn-iv-system/?lang=en) | ✅ | ✅ | ? | [Intel Cascade Lake AP]((https://www.hlrn.de/supercomputer-e/hlrn-iv-system/?lang=en)) | coming soon: Nvidia A100, Intel PVC | [1](https://www.hlrn.de/doc/display/PUB/Julia)
 
-#### North America
+### North America
 
 **Center** | **System** | **Installation** | **Support** | **Interactive** | **Architecture** | **Accelerators** | **Documentation**
 -----|-----|-----|-----|-----|-----|-----|-----
@@ -70,7 +73,7 @@ Julia installation and/or support for using Julia to its users. For this, we use
 [Pittsburgh Supercomputing Center](https://www.psc.edu) | [Bridges-2](https://www.psc.edu/resources/bridges-2/) | ✅ | ✅  | ✅ | [AMD EPYC, Intel Xeon](https://www.psc.edu/resources/bridges-2/) | [Nvidia V100](https://www.psc.edu/resources/bridges-2/) | [1](https://www.psc.edu/resources/software/julia/)
 [Princeton University](https://princeton.edu) | Several including [Tiger](https://researchcomputing.princeton.edu/systems/tiger) | ✅ | ✅ | ✅  | [Intel Xeon (Skylake + Broadwell)](https://researchcomputing.princeton.edu/systems/tiger) | [Nvidia P100](https://researchcomputing.princeton.edu/systems/tiger) | [1](https://researchcomputing.princeton.edu/support/knowledge-base/julia)
 
-#### Other HPC systems
+### Other HPC systems
 There are a number of other HPC systems that have been reported to provide a Julia installation and/or Julia support, but lack enough details to be put on the list above:
 
 * Various clusters at [ANL](https://www.anl.gov)

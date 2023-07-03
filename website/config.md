@@ -8,8 +8,8 @@ The website_* must be defined for the RSS to work
 
 @def author = "Carsten Bauer"
 
-@def mintoclevel = 1
-@def maxtoclevel = 2
+@def mintoclevel = 2
+@def maxtoclevel = 3
 
 @def prepath = "JuliaOnHPCClusters"
 <!--

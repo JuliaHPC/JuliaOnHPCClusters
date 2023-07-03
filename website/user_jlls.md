@@ -8,8 +8,6 @@ noeval = true
 
 # JLLs vs system software
 
---- 
-
 \label{content}
 **Content**
 
