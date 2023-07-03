@@ -49,3 +49,9 @@ Set [`JULIA_CPU_TARGET`](https://docs.julialang.org/en/v1.10-dev/manual/environm
 Example: `JULIA_CPU_TARGET="generic;skylake-avx512,clone_all;znver2,clone_all"`.
 
 [⤴ _**back to Content**_](#content)
+
+## Should I use Distributed.jl or MPI.jl for large-scale parallelism?
+
+While the Distributed standard library provides some convenient tools and has its use cases you should generally use MPI.jl to scale your code up (e.g. to thousands of compute nodes). Not only is MPI the established standard for distributed computing in any programming language, it also makes use of fast interconnects in HPC clusters (which the Distributed standard library currently doesn't).
+
+[⤴ _**back to Content**_](#content)
