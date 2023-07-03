@@ -4,7 +4,7 @@ title = "Julia On HPC Clusters"
 
 # Julia on HPC clusters
 
-🎉 Welcome to ETH's **course 101-0250-00L** on solving partial differential equations (PDEs) in parallel on graphical processing units (GPUs) with the [Julia programming language](http://www.julialang.org/).
+<!-- 🎉 Welcome to ETH's **course 101-0250-00L** on solving partial differential equations (PDEs) in parallel on graphical processing units (GPUs) with the [Julia programming language](http://www.julialang.org/).
 
 > **Announce:** 2022 edition starts Tuesday Sept. 20, 12h45. Welcome!
 
@@ -59,4 +59,4 @@ The goal of this course is to offer a practical approach to solve systems of dif
 
 
 ## Creators
-- [Carsten Bauer](https://carstenbauer.eu/) - PC2 / NHR
+- [Carsten Bauer](https://carstenbauer.eu/) - PC2 / NHR -->
