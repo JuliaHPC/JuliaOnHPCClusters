@@ -4,14 +4,14 @@ The website_* must be defined for the RSS to work
 -->
 @def website_title = "Julia On HPC Clusters"
 @def website_descr = "Learn how to use and/or set up Julia on HPC clusters"
-<!-- @def website_url   = "https://carstenbauer.eu/" -->
+@def website_url   = "https://carstenbauer.github.io/"
 
 @def author = "Carsten Bauer"
 
 @def mintoclevel = 1
 @def maxtoclevel = 2
 
-@def prepath = ""
+@def prepath = "JuliaOnHPCClusters/website"
 <!--
 Add here files or directories that should be ignored by Franklin, otherwise
 these files might be copied and, if markdown, processed by Franklin which
