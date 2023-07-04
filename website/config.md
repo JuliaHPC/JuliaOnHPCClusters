@@ -4,7 +4,7 @@ The website_* must be defined for the RSS to work
 -->
 @def website_title = "Julia On HPC Clusters"
 @def website_descr = "Learn how to use and/or set up Julia on HPC clusters"
-@def website_url   = "https://carstenbauer.github.io/"
+@def website_url   = "https://juliahpc.github.io/"
 
 @def author = "Carsten Bauer"
 
