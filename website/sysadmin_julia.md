@@ -50,7 +50,7 @@ In this example we show how to make MPI.jl automatically use a system OpenMPI in
 1) Create a global `Project.toml` that sets the preferences of the target packages.
 2) Append the path to the global `Project.toml` to `JULIA_LOAD_PATH` (for all users).
 
-According to the documentation of MPI.jl and CUDA.jl the relevant preferences that we need to modify are actually not in MPI.jl or CUDA.jl but rather in MPIPreferences.jl and CUDA\_Runtime\_jll.jl. We thus create a `Project.toml` like below:
+According to the documentation of MPI.jl ([relevant section](https://juliaparallel.org/MPI.jl/stable/configuration/#Notes-to-HPC-cluster-administrators)) and CUDA.jl ([relevant section](https://cuda.juliagpu.org/stable/installation/overview/#Using-a-local-CUDA)) the preferences that we need to modify are actually not in MPI.jl or CUDA.jl but rather in MPIPreferences.jl and CUDA\_Runtime\_jll.jl. We thus create a `Project.toml` like below:
 
 \note{Tip: To obtain the correct preferences blocks you can use `MPIPreferences.use_system_binary()` and `CUDA.set_runtime_version!("local")` respectively. This will create the relevant blocks in a `LocalPreferences.toml` file. The only thing you need to adjust is the block header, e.g. `MPIPreferences` -> `preferences.MPIPreferences`.}
 
@@ -76,7 +76,13 @@ The only thing we then have to do is to append the path to this file to the `JUL
 
 Since every user should get the modified `JULIA_LOAD_PATH` above, the environment variable should best be set directly in the Lmod module that also provides the Julia binaries as well as the MPI and CUDA installations we're pointing to. This way, any user who loads the module and then adds MPI.jl and CUDA.jl to one of their environments (i.e. `] add MPI CUDA`) will automatically use the system MPI and system CUDA under the hood without having to do anything else. That is to say that the global preference system is *opt-out* (the user can always override the global preferences with local preferences, e.g. via a `LocalPreferences.toml`, on a per-project basis).
 
-\note{To check that things are working as expected you can `] add MPI CUDA` and then run `CUDA.runtime_version()` and `CUDA.versioninfo()` which should give the version of the system CUDA and say "local installation", respectively:
+**Side note:** Speaking of setting environment variables in the module file, it is recommended to set `JULIA_CUDA_MEMORY_POOL=none` to disable the [memory pool](https://cuda.juliagpu.org/stable/usage/memory/#Memory-pool) that CUDA.jl uses by default. This is particularly advisable when you use a system CUDA due to incompatibility with certain CUDA APIs.
+
+\note{You might want to check out [JuliaHPC_Installer](https://git.uni-paderborn.de/pc2-public/juliahpc_installer) which is a Julia script that automates the installation of a new Julia version via easybuild, including the global `Project.toml` setup discussed above. It is used on [Noctua 2](https://pc2.uni-paderborn.de/hpc-services/available-systems/noctua2) at [PC2](https://pc2.uni-paderborn.de/). However, it is currently not portable out of the box (since e.g. paths are hardcoded).}
+
+
+### Checking that things work es expected
+To check that things are working you can `] add MPI CUDA` and then run `CUDA.runtime_version()` and `CUDA.versioninfo()` which should give the version of the system CUDA and say "local installation", respectively:
 ```
 julia> using CUDA
 
@@ -102,6 +108,48 @@ julia> MPI.identify_implementation()
 julia> MPI.MPIPreferences.binary
 "system"
 ```
-}
 
 [⤴ _**back to Content**_](#content)
+
+## Supporting Visual Studio Code
+
+One of the key features of Julia is that it is inherently dynamic. Users might thus likely want to use Julia interactively and remotely on your HPC cluster. One way to do so is through [VS Code](https://code.visualstudio.com/), specifically via the [Julia VS Code extension](https://www.julia-vscode.org/). The extension really only needs one thing to work: the `julia` binary. However, if you provide Julia as a module, this binary is only available if this module is already loaded (which it isn't if the user just connects to the cluster via [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)).
+
+A good solution to this problem is to provide a script (e.g. called `julia_vscode`), which serves as an in-place replacement for `julia` but takes care of the module loading first (see below).
+
+```shell
+#!/bin/bash
+# Example script `julia_vscode` used on Noctua 2 at PC2
+# The Julia module used below is called "lang/JuliaHPC"
+# Author: Carsten Bauer
+
+# ------ Set up the module system (HPC system specific) ------
+export MODULEPATH=/etc/modulefiles:/usr/share/modulefiles || :
+source /usr/share/lmod/lmod/init/profile
+if [ -f "/opt/software/pc2/lmod/modules/DefaultModules.lua" ];then
+        export MODULEPATH="$MODULEPATH:/opt/software/pc2/lmod/modules"
+        export LMOD_SYSTEM_DEFAULT_MODULES="DefaultModules"
+else
+        if [ -f "/usr/share/modulefiles/StdEnv.lua" ];then
+                export LMOD_SYSTEM_DEFAULT_MODULES="StdEnv"
+        fi
+fi
+module --initial_load restore
+# ------------------------------------------------------------
+
+# Load a specific Julia module
+module load lang/JuliaHPC/1.9.1-foss-2022a-CUDA-11.7.0
+
+# Start Julia and pass on all command-line arguments
+exec julia "${@}"
+```
+
+At PC2 such a script is provided for every Julia version / Julia module (see [JuliaHPC_Installer](https://git.uni-paderborn.de/pc2-public/juliahpc_installer)) as well as a generic one that only contains `module load lang/JuliaHPC` (without a version number) and thus always loads the latest Julia module.
+
+[⤴ _**back to Content**_](#content)
+
+## Potentially useful resources
+
+* [JuliaHPC_Installer](https://git.uni-paderborn.de/pc2-public/juliahpc_installer) by [Carsten Bauer](https://carstenbauer.eu): a Julia script that automates the installation of a new Julia version via easybuild, including the global `Project.toml` setup discussed above. It is used on [Noctua 2](https://pc2.uni-paderborn.de/hpc-services/available-systems/noctua2) at [PC2](https://pc2.uni-paderborn.de/). However, it is currently not portable out of the box (since e.g. paths are hardcoded).
+* [Johannes Blaschke](https://github.com/jblaschke) provides [scripts and templates](https://gitlab.blaschke.science/nersc/julia/-/tree/main/modulefiles) to set up modules file for Julia on some of NERSC's systems
+* [Samuel Omlin](https://github.com/omlins) and colleagues from CSCS provide their [Easybuild configuration files](https://github.com/eth-cscs/production/tree/master/easybuild/easyconfigs/j/Julia) used for Piz Daint
