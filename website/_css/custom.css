@@ -22,7 +22,9 @@ body {
     z-index: 2;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: #00004d; /*#282936;*/
+    /* background-color: #00004d; */
+    /* background-color: #00205b; */
+    background-color: #013d5b;
 }
 
 .content {
@@ -128,7 +130,9 @@ pre.code-output {
     /*font-style: italic;*/
     /*display: flex;*/
     align-items: center;
-    color: #ffff80; /*#d9a200;*/
+    /* color: #ffff80; */
+    color: #edae4a;
+    /* color: #fecf6e; */
     margin-top: 1em;
 }
 .sidebar-nav .course-section::before,
