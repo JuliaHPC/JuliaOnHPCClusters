@@ -31,6 +31,8 @@ Julia installation and/or support for using Julia to its users. For this, we use
 * *Accelerators:* The main accelerator (if anything) in the system
 * *Documentation:* Links to documentation for Julia users
 
+Please feel free to [edit the list](https://github.com/JuliaHPC/JuliaOnHPCClusters/edit/main/website/user_hpcsystems.md) if you want to add a HPC system that isn't mentioned yet or want to update/correct some information about a listed system.
+
 ## HPC systems
 
 (Sorted in alphabetical order)
