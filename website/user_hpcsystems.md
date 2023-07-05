@@ -8,7 +8,7 @@ noeval = true
 
 # HPC systems with Julia support
 
-\note{It is difficult to keep the table below up-to-date. It is also almost certainly uncomplete. We rely on people like you, so please file a PR if you think the table could be improved!}
+\note{It is difficult to keep the table below up-to-date. It is also almost certainly incomplete. We rely on people like you, so please file a PR if you think the table could be improved!}
 
 ---
 
@@ -30,8 +30,6 @@ Julia installation and/or support for using Julia to its users. For this, we use
 * *Architecture:* The main CPU used in the system
 * *Accelerators:* The main accelerator (if anything) in the system
 * *Documentation:* Links to documentation for Julia users
-
-Please feel free to [edit the list](https://github.com/JuliaHPC/JuliaOnHPCClusters/edit/main/website/user_hpcsystems.md) if you want to add a HPC system that isn't mentioned yet or want to update/correct some information about a listed system.
 
 ## HPC systems
 

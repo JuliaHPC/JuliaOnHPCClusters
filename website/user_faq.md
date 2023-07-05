@@ -17,7 +17,7 @@ noeval = true
 
 ## Should I compile Julia from source?
 
-**No, you should not.** Use the pre-built binaries from the website or, preferrably, a corresponding Lmod module provided by the cluster admins. Compiling Julia from source will generally **not** improve the performance of your code (Julia is a compiler in itself) but may very well be cumbersome. Unless you know what you're doing and have a very good reason (e.g. creating a debug build with flags like `USE_INTEL_JITEVENTS=1`) you should not compile Julia yourself.
+**No, you should not.** Use the pre-built binaries from the website or, preferably, a corresponding Lmod module provided by the cluster admins. Compiling Julia from source will generally **not** improve the performance of your code (Julia is a compiler in itself) but may very well be cumbersome. Unless you know what you're doing and have a very good reason (e.g. creating a debug build with flags like `USE_INTEL_JITEVENTS=1`) you should not compile Julia yourself.
 
 [⤴ _**back to Content**_](#content)
 
@@ -56,7 +56,7 @@ While the Distributed standard library provides some convenient tools and has it
 
 ## Should I use Julia artifacts (JLLs) or system software?
 
-If JLLs work fine for you then use them. JLLs have the big advantage that they are convenient and, in many cases, "just work" out of the box. System software can (but doesn't necessarily) give better performance but overriding the relevant bits of JLLs can be cumbersome. Generelly speaking, we recommend to only manually replace JLL libraries by system software if JLLs don't work (e.g. if a vendor specific MPI is required). However, in such a case it would be even better to nudge the HPC admins and make this setup permanent and generally available in form of a Julia Lmod module.
+If JLLs work fine for you then use them. JLLs have the big advantage that they are convenient and, in many cases, "just work" out of the box. System software can (but doesn't necessarily) give better performance but overriding the relevant bits of JLLs can be cumbersome. Generally speaking, we recommend to only manually replace JLL libraries by system software if JLLs don't work (e.g. if a vendor specific MPI is required). However, in such a case it would be even better to nudge the HPC admins and make this setup permanent and generally available in form of a Julia Lmod module.
 
 [⤴ _**back to Content**_](#content)
 
