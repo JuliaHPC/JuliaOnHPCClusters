@@ -98,5 +98,6 @@ If you know something about the following tools, in particular if and how it sup
 * [TAU](https://www.cs.uoregon.edu/research/tau/home.php)
 * [MUST](https://www.i12.rwth-aachen.de/go/id/nrbe) (MPI runtime correctness analysis)
 * [PAPI](https://icl.utk.edu/papi/) / [PAPI.jl](https://github.com/JuliaPerf/PAPI.jl) (to be compared to LIKWID)
+* [HPCToolkit](http://hpctoolkit.org/index.html)
 
 [⤴ _**back to Content**_](#content)
