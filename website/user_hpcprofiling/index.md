@@ -86,11 +86,10 @@ Noteworthy limitations:
 
 Examples:
 
-* TBD
+* [Multithreaded SAXPY](/user_hpcprofiling/intel_vtune/)
 
 Impressions:
 
-![](/user_hpcprofiling/vtunes_saxpy_summary.png)
 ![](/user_hpcprofiling/vtunes_saxpy_details.png)
 
 ## Other tools
