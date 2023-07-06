@@ -19,9 +19,7 @@ There are plenty of HPC tools for profiling out there. Figuring out which one is
 
 ---
 
-## Tools Overview
-
-### NVIDIA Nsight Systems
+## NVIDIA Nsight Systems
 
 Good for: GPU, MPI
 
@@ -35,7 +33,7 @@ Impressions:
 
 ![](/user_hpcprofiling/nsys.png)
 
-### Score-P
+## Score-P
 
 Good for: MPI
 
@@ -47,13 +45,14 @@ Noteworthy limitations:
 
 Examples:
 * You're best chance is to check out the [README.md](https://github.com/JuliaPerf/ScoreP.jl/blob/main/README.md).
+* Only works on Linux.
 
 Impressions (of Cube and Vampir):
 
 ![](/user_hpcprofiling/scorep_cube.png)
 ![](/user_hpcprofiling/scorep_vampir.png)
 
-### LIKWID
+## LIKWID
 
 Good for: intra-node hardware-level profiling
 
@@ -63,6 +62,7 @@ Noteworthy limitations:
 
 * Manual installation of LIKWID necessary (no JLL).
 * Some features marked as experimental (but basic core is solid).
+* Only works on Linux.
 
 Examples:
 * [Counting floating point operations of arbitrary Julia functions.](https://juliaperf.github.io/LIKWID.jl/stable/tutorials/counting_flops/)
@@ -72,7 +72,7 @@ Impressions:
 
 ![](/user_hpcprofiling/likwid.png)
 
-### Intel VTune Profiler
+## Intel VTune Profiler
 
 Good for: serial, multithreading, GC
 
@@ -80,7 +80,9 @@ The [Intel VTune Profiler](https://www.intel.com/content/www/us/en/developer/too
 
 Noteworthy limitations:
 
-* May require compiling Julia from source.
+* Works best (only?) on systems with Intel CPUs.
+* Can't profile on macOS (only remotely on Linux machine).
+* May require compiling Julia from source (if you want more details, e.g., about GC).
 
 Examples:
 
@@ -88,9 +90,10 @@ Examples:
 
 Impressions:
 
-TBD
+![](/user_hpcprofiling/vtunes_saxpy_summary.png)
+![](/user_hpcprofiling/vtunes_saxpy_details.png)
 
-### Other tools
+## Other tools
 
 If you know something about the following tools, in particular if and how it supports Julia, please make a PR!
 
