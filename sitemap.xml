@@ -44,6 +44,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://juliahpc.github.io/user_hpcprofiling/intel_vtune/index.html</loc>
+    <lastmod>2023-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://juliahpc.github.io/user_faq/index.html</loc>
     <lastmod>2023-07-06</lastmod>
     <changefreq>monthly</changefreq>
