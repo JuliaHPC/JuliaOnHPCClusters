@@ -17,7 +17,12 @@ noeval = true
 
 ---
 
-## Remote usage
+## General notes
+
+* You need to set `ENABLE_JITPROFILING=1`.
+* For Julia < 1.9, you need to compile Julia from source with `USE_INTEL_JITEVENTS=1`.
+
+## Remote usage - GUI
 
 ### Example code
 
@@ -120,3 +125,19 @@ measure_membw(; pin=:numa, init=:parallel)
   * Due to how Julia works internally, your Julia functions appear with the prefix `julia_` and a suffix `_XX`, where `XX` is a unique number, in the call stack. For example, the Julia function `mysquare(x) = x^2` might appear as `julia_mysquare_89`.
   * In the SAXPY example above, we use `@threads`, which, under the hood, [creates a function `threadsfor_fun`](https://github.com/JuliaLang/julia/blob/feb2988b3a21968410267378b910ce67726a51d8/base/threadingconstructs.jl#L169-L204) that will then get run (see the top-down tree above). Unfortunately, this can also cause problems like "cutting off" the call stack information as well as hindering source code resolution.
   * Source code resolution (i.e. "View Source") didn't work for me remotely. However, it gives you the option to point to the source file locally. This worked fine.
+
+## Command-line interface (CLI)
+
+Useful commands:
+
+* Profiling: `ENABLE_JITPROFILING=1 vtune -collect hotspots -start-paused -- julia --project mycode.jl`
+* Open the results in the GUI: `vtune-gui r000hs`
+* Generating text reports:
+
+```shell
+vtune -report hotspots -r r000hs -group-by source-line > reports/hotspots.report
+vtune -report top-down -r r000hs > reports/top_down.report
+vtune -report callstacks -r r000hs > reports/callstacks.report
+```
+
+Check out the [julia-intelvtune repository](https://github.com/carstenbauer/julia-intelvtune) by Carsten Bauer which contains a basic demonstration.

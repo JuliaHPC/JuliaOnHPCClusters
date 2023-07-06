@@ -76,7 +76,7 @@ Impressions:
 
 Good for: serial, multithreading, GC
 
-The [Intel VTune Profiler](https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html) is a nice tool, e.g., for finding hot spots in your code. It supports local and remote performance profiling. To make it work with Julia check out [IntelITT.jl](https://github.com/JuliaPerf/IntelITT.jl).
+The [Intel VTune Profiler](https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html) is a nice tool, e.g., for finding hot spots in your code. It supports local and remote performance profiling. To make it work with Julia check out [IntelITT.jl](https://github.com/JuliaPerf/IntelITT.jl) and our dedicated [Intel VTune + Julia](/user_hpcprofiling/intel_vtune/) page.
 
 Noteworthy limitations:
 
@@ -86,7 +86,8 @@ Noteworthy limitations:
 
 Examples:
 
-* [Multithreaded SAXPY](/user_hpcprofiling/intel_vtune/)
+* [Intel VTune + Julia](/user_hpcprofiling/intel_vtune/) (e.g. remote usage via GUI)
+* [Basic CLI Example](https://github.com/carstenbauer/julia-intelvtune)
 
 Impressions:
 
