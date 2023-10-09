@@ -52,7 +52,7 @@ In this example we show how to make MPI.jl automatically use a system OpenMPI in
 
 According to the documentation of MPI.jl ([relevant section](https://juliaparallel.org/MPI.jl/stable/configuration/#Notes-to-HPC-cluster-administrators)) and CUDA.jl ([relevant section](https://cuda.juliagpu.org/stable/installation/overview/#Using-a-local-CUDA)) the preferences that we need to modify are actually not in MPI.jl or CUDA.jl but rather in MPIPreferences.jl and CUDA\_Runtime\_jll.jl. We thus create a `Project.toml` like below:
 
-\note{Tip: To obtain the correct preferences blocks you can use `MPIPreferences.use_system_binary()` and `CUDA.set_runtime_version!(local_toolkit=true)` respectively. This will create the relevant blocks in a `LocalPreferences.toml` file. The only thing you need to adjust is the block header, e.g. `MPIPreferences` -> `preferences.MPIPreferences`.}
+\note{Tip: To obtain the correct preferences blocks you can use `MPIPreferences.use_system_binary()` and `CUDA.set_runtime_version!(v"11.8"; local_toolkit=true)` respectively. This will create the relevant blocks in a `LocalPreferences.toml` file. The only thing you need to adjust is the block header, e.g. `MPIPreferences` -> `preferences.MPIPreferences`.}
 
 ```
 [extras]
@@ -68,6 +68,7 @@ mpiexec = "mpiexec"
 
 [preferences.CUDA_Runtime_jll]
 local = "true"
+version = "11.8"
 ```
 
 The only thing we then have to do is to append the path to this file to the `JULIA_LOAD_PATH`. The way to do it is as follows: `export JULIA_LOAD_PATH=:/path/to/projectoml/`. Note the critical colon (`:`) here which implies *appending* rather than overwriting.
