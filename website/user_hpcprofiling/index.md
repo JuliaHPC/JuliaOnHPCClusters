@@ -42,8 +42,6 @@ The Julia package [Extrae.jl](https://github.com/bsc-quantic/Extrae.jl) allows y
 Noteworthy limitations:
 * The package isn't battle-tested.
 * The Paraver GUI might be overwhelming and takes some getting used to.
-
-Examples:
 * Only works on Linux.
 
 Impressions (of Paraver):
