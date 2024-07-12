@@ -33,6 +33,25 @@ Impressions:
 
 ![](/user_hpcprofiling/nsys.png)
 
+## Extrae
+
+Good for: MPI, GPU, Threads
+
+The Julia package [Extrae.jl](https://github.com/bsc-quantic/Extrae.jl) allows you to use [Extrae](https://tools.bsc.es/extrae) for analyzing parallel Julia applications. It will produce trace files that can be visualized and analyzed with [Paraver](https://tools.bsc.es/paraver).
+
+Noteworthy limitations:
+* The package isn't battle-tested.
+* The Paraver GUI might be overwhelming and takes some getting used to.
+
+Examples:
+* Only works on Linux.
+
+Impressions (of Paraver):
+
+![](/user_hpcprofiling/paraver_1.jpg)
+![](/user_hpcprofiling/paraver_2.gif)
+
+
 ## Score-P
 
 Good for: MPI
@@ -97,7 +116,6 @@ Impressions:
 
 If you know something about the following tools, in particular if and how it supports Julia, please make a PR!
 
-* [Extrae](https://tools.bsc.es/extrae) (instrumentation / measurement framework, comparable to Score-P)
 * [TAU](https://www.cs.uoregon.edu/research/tau/home.php)
 * [MUST](https://www.i12.rwth-aachen.de/go/id/nrbe) (MPI runtime correctness analysis)
 * [PAPI](https://icl.utk.edu/papi/) / [PAPI.jl](https://github.com/JuliaPerf/PAPI.jl) (to be compared to LIKWID)

@@ -30,7 +30,7 @@ Ideally, you should set `JULIA_DEPOT_PATH` to point to a place with the followin
 * read and write access
 * no automatic deletion of unused files (or otherwise you have to find a workaround)
 
-On some systems, the best place might be on the parallel file system. On others, it might simply be in `$HOME`.
+As a rule of thumb: Put the Julia depot on the parallel file system (typically `$SCRATCH`).
 
 [⤴ _**back to Content**_](#content)
 
@@ -38,13 +38,17 @@ On some systems, the best place might be on the parallel file system. On others,
 
 Assuming that SLURM is used on your HPC cluster, you should generally start Julia under `srun`, e.g. `srun julia --project mycode.jl`. This is especially important if your code is MPI-parallel, in which case `srun` is a replacement for `mpirun`/`mpiexec`, but also recommended for serial code (there are at least [a few reasons](https://stackoverflow.com/a/53640511/2365675)).
 
+Note that you can use the slim `mpiexecjl` wrapper from `MPI.jl` to use the "correct" MPI driver automatically.
+
 [⤴ _**back to Content**_](#content)
 
 ## How can I force Julia to compile code for a heterogeneous cluster?
 
 Set [`JULIA_CPU_TARGET`](https://docs.julialang.org/en/v1.10-dev/manual/environment-variables/#JULIA_CPU_TARGET) to a value that is generic enough to cover all the types of CPUs that you're targeting.
 
-Example: `JULIA_CPU_TARGET="generic;skylake-avx512,clone_all;znver2,clone_all"`.
+**Example:** `JULIA_CPU_TARGET="generic;skylake-avx512,clone_all;znver2,clone_all"`.
+
+This compiles all functions (`clone_all`) for Intel Skylake (`skylake-avx512`), AMD Zen 2 (`znver2`), and a generic fallback (`generic`).
 
 [⤴ _**back to Content**_](#content)
 

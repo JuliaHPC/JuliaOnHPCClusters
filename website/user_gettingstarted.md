@@ -35,7 +35,7 @@ One you have `julia`, you must make sure that the Julia depot is placed on an ap
 * good (parallel) I/O
 * no automatic deletion of unused files (or otherwise you have to find a workaround)
 
-Often times these criterion are best fit on a parallel file system (which `$HOME` rarely is). For this reason it might be necessary to set `JULIA_DEPOT_PATH=/path/to/fast/fs/.julia`.
+Often times these criterion are best fit on a parallel file system (often `$SCRATCH`). For this reason it might be necessary to set `JULIA_DEPOT_PATH=$SCRATCH/.julia`.
 
 Note that if the last point (automatic deletion of unused files) is an issue for you, a pragmatic workaround could be a cronjob that touches all files in the Julia depot every once in a while.
 
